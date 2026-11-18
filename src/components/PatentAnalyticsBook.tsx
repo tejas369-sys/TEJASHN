@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { patentAnalyticsPages } from '../data/patentAnalyticsData';
 
 const SHEET_SURFACE_COLORS = [
@@ -35,16 +34,6 @@ export const PatentAnalyticsBook: React.FC = () => {
     },
     [totalPages]
   );
-
-  const handleNext = useCallback(() => {
-    hasInteractedRef.current = true;
-    setActivePage((prev) => (prev + 1) % totalPages);
-  }, [totalPages]);
-
-  const handlePrev = useCallback(() => {
-    hasInteractedRef.current = true;
-    setActivePage((prev) => Math.max(prev - 1, 0));
-  }, []);
 
   useEffect(() => {
     if (!hasInteractedRef.current) return;
@@ -365,51 +354,6 @@ export const PatentAnalyticsBook: React.FC = () => {
           </div>
         </div>
 
-        {/* FOLIO PAGE CONTROLS (PREVIOUS / NEXT) */}
-        <div className="relative z-30 mt-2 pt-3 border-t border-[#B49A68]/20 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#D8C7A4] tabular-nums">
-              Page {currentPage.pageNumber} / 0{totalPages}
-            </span>
-            <div className="flex items-center gap-1.5" role="group" aria-label="Page indicators">
-              {patentAnalyticsPages.map((p, idx) => (
-                <button
-                  key={`dot-${p.id}`}
-                  type="button"
-                  tabIndex={-1}
-                  onClick={() => goToPage(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    idx === activePage
-                      ? 'w-6 bg-[#B49A68]'
-                      : 'w-2 bg-[#B49A68]/35 hover:bg-[#B49A68]/60'
-                  }`}
-                  aria-label={`Jump to page ${p.pageNumber}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2.5 ml-auto">
-            <button
-              type="button"
-              onClick={handlePrev}
-              disabled={activePage === 0}
-              className="inline-flex items-center justify-center gap-2 px-4 min-h-[44px] rounded-xl border border-[#B49A68]/35 bg-[#1D2229] text-[#FBF7EE] text-xs font-semibold uppercase tracking-wider transition-all duration-200 hover:border-[#B49A68] hover:bg-[#242B34] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Previous</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleNext}
-              className="inline-flex items-center justify-center gap-2 px-5 min-h-[44px] rounded-xl bg-[#B49A68] text-[#111C2B] text-xs font-bold uppercase tracking-wider shadow-[0_6px_18px_rgba(180,154,104,0.28)] transition-all duration-200 hover:bg-[#C7AE7D] active:translate-y-px cursor-pointer"
-            >
-              <span>{activePage === totalPages - 1 ? 'Next (Page 01)' : 'Next'}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
