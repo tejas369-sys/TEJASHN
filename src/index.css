@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ivory: #F7F4ED;
+    --color-navy: #111C2B;
+    --color-gold: #B49A68;
+    --color-gold-light: #C9B488;
+    --color-gold-dark: #8E774A;
+    --color-piano-black: #151515;
+    --color-warm-white: #FFFEFA;
+    --color-stone: #85827C;
+  }
+
+  html, body {
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-piano-black);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-serif-display {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+
+  .font-heading {
+    font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Custom background & accent utilities */
+.bg-ivory { background-color: #F7F4ED; }
+.bg-navy { background-color: #111C2B; }
+.bg-gold { background-color: #B49A68; }
+.bg-piano { background-color: #151515; }
+.bg-warm-white { background-color: #FFFEFA; }
+
+.text-navy { color: #111C2B; }
+.text-gold { color: #B49A68; }
+.text-gold-light { color: #C9B488; }
+.text-piano { color: #151515; }
+.text-stone-custom { color: #85827C; }
+
+.border-gold { border-color: #B49A68; }
+.border-gold-subtle { border-color: rgba(180, 154, 104, 0.25); }
+.border-navy-subtle { border-color: rgba(17, 28, 43, 0.12); }
+.border-ivory-subtle { border-color: rgba(247, 244, 237, 0.15); }
+
+/* Delicate geometric staff line pattern */
+.bg-staff-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 19px,
+    rgba(180, 154, 104, 0.05) 19px,
+    rgba(180, 154, 104, 0.05) 20px
+  );
+}
+
+.bg-dark-staff-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 23px,
+    rgba(180, 154, 104, 0.07) 23px,
+    rgba(180, 154, 104, 0.07) 24px
+  );
+}

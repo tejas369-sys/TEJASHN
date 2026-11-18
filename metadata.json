@@ -1,0 +1,6 @@
+{
+  "name": "pianoIP — Intellectual Property Advisory & Patent Analytics",
+  "description": "An internationally respected Intellectual Property consultancy providing patent filing, patent analytics, IP portfolio management, trademark, copyright, and industrial design protection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
